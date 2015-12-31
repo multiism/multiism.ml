@@ -1,6 +1,23 @@
 
 nodes = []
 connections = []
+pointers = {}
+
+canvas.setAttribute "touch-action", "none"
+
+canvas.addEventListener "pointerdown", (e)->
+	pointers[e.pointerId] = x: e.clientX, y: e.clientY
+canvas.addEventListener "pointermove", (e)->
+	pointer = pointers[e.pointerId]
+	if pointer?
+		pointer.previous_x = pointer.x
+		pointer.previous_y = pointer.y
+		pointer.x = e.clientX
+		pointer.y = e.clientY
+canvas.addEventListener "pointerup", (e)->
+	delete pointers[e.pointerId]
+canvas.addEventListener "pointercancel", (e)->
+	delete pointers[e.pointerId]
 
 class Node
 	constructor: ->
@@ -16,8 +33,20 @@ class Node
 		connections.push [@, @to]
 		nodes.push @
 	step: ->
-		@x += @vx
-		@y += @vy
+		for pointerId, pointer of pointers
+			if pointer.previous_x? and pointer.previous_y?
+				pointer_movement_x = pointer.x - pointer.previous_x
+				pointer_movement_y = pointer.y - pointer.previous_y
+				
+				dx = pointer.x - canvas.width / 2 - @x
+				dy = pointer.y - canvas.height / 2 - @y
+				d = sqrt(dx*dx + dy*dy)
+				
+				@vx += pointer_movement_x / max(10, d) * 5
+				@vy += pointer_movement_y / max(10, d) * 5
+			
+		@x += @vx *= 0.99
+		@y += @vy *= 0.99
 		for [a, b] in connections when a is @
 			dx = b.x - a.x
 			dy = b.y - a.y
@@ -105,9 +134,6 @@ animate ->
 	ctx.lineWidth = 4
 	ctx.lineCap = "round"
 	
-	for node in nodes
-		node.vx *= 0.99
-		node.vy *= 0.99
 	root.x = 0
 	root.y = 0
 	root.vx = 0
