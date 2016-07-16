@@ -29,7 +29,7 @@ class Node
 		@to = x: 0, y: 0, r: 20
 		@level = 0
 		@children = []
-		@color = "hsla(152, 100%, 67%, 0.4)"#"hsla(#{random()*360}, 100%, #{random()*60 + 40}%, 0.6)"
+		@color = "hsla(152, 100%, 67%, 0.6)"#"hsla(#{random()*360}, 100%, #{random()*60 + 40}%, 0.6)"
 		connections.push [@, @to]
 		nodes.push @
 	step: ->
@@ -67,13 +67,14 @@ class Node
 		ctx.arc @x, @y, @r, 0, TAU
 		ctx.globalAlpha = max(0, min(1, 100 / @r))
 		ctx.strokeStyle = @color
-		ctx.shadowBlur = 5
-		ctx.shadowColor = @color
+		# ctx.shadowBlur = 5
+		# ctx.shadowColor = @color
 		ctx.lineWidth = 4
 		ctx.stroke()
-		ctx.lineWidth = 3
-		ctx.stroke()
+		# ctx.lineWidth = 3
+		# ctx.stroke()
 		if @parent
+			ctx.globalAlpha /= 2
 			ctx.beginPath()
 			ctx.moveTo(@parent.x, @parent.y)
 			ctx.lineTo(@x, @y)
