@@ -64,39 +64,21 @@ class Node
 	draw: ->
 		@r += (@to.r - @r) / 50
 		ctx.beginPath()
-		# if @parent
-		# 	dx = @parent.x - @x
-		# 	dy = @parent.y - @y
-		# 	angle_to_parent = atan2(dy, dx)
-		# 	dist_to_parent = sqrt(dx*dy + dy*dy)
-		# 	dist_to_parent = 0 if isNaN dist_to_parent
-		# 	
-		# 	ctx.save()
-		# 	r = @r
-		# 	c = r * 4 * (sqrt(2)-1) / 3
-		# 	a = max(1, dist_to_parent / r)
-		# 	ctx.translate @x, @y
-		# 	ctx.rotate angle_to_parent + TAU/2
-		# 	
-		# 	ctx.moveTo +0,+r
-		# 	ctx.bezierCurveTo +c,+r,  +r,+c,  +r,+0
-		# 	ctx.bezierCurveTo +r,-c,  +c,-r,  +0,-r
-		# 	ctx.bezierCurveTo -c,-r,  -r,-c,  -r*a,+0
-		# 	ctx.bezierCurveTo -r*a,+c,  -c*a,+r,  +0,+r
-		# 	
-		# 	ctx.restore()
-		# else
 		ctx.arc @x, @y, @r, 0, TAU
 		ctx.globalAlpha = max(0, min(1, 100 / @r))
-		ctx.fillStyle = @color
 		ctx.strokeStyle = @color
 		ctx.shadowBlur = 5
 		ctx.shadowColor = @color
 		ctx.lineWidth = 4
-		# ctx.fill()
 		ctx.stroke()
 		ctx.lineWidth = 3
 		ctx.stroke()
+		if @parent
+			ctx.beginPath()
+			ctx.moveTo(@parent.x, @parent.y)
+			ctx.lineTo(@x, @y)
+			ctx.lineWidth = 2
+			ctx.stroke()
 	
 	spawn: ->
 		node = new Node
@@ -106,8 +88,8 @@ class Node
 		node.x = @x
 		node.y = @y
 		spanning_angle = (random() - 1 / 2) * TAU # "spangle"?
-		node.to.x = @to.x + sin(spanning_angle) * 50
-		node.to.y = @to.y - cos(spanning_angle) * 50
+		node.to.x = @to.x + sin(spanning_angle) * 150
+		node.to.y = @to.y - cos(spanning_angle) * 150
 		connections.push [@, node]
 		thing = @
 		things_to_expand = []
