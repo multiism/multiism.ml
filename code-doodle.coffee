@@ -29,7 +29,7 @@ class Node
 		@to = x: 0, y: 0, r: 20
 		@level = 0
 		@children = []
-		@color = "hsla(#{random()*360}, 100%, #{random()*60 + 40}%, 0.6)"
+		@color = "hsla(152, 100%, 67%, 0.4)"#"hsla(#{random()*360}, 100%, #{random()*60 + 40}%, 0.6)"
 		connections.push [@, @to]
 		nodes.push @
 	step: ->
@@ -63,33 +63,39 @@ class Node
 					@spawn()
 	draw: ->
 		@r += (@to.r - @r) / 50
+		ctx.beginPath()
+		# if @parent
+		# 	dx = @parent.x - @x
+		# 	dy = @parent.y - @y
+		# 	angle_to_parent = atan2(dy, dx)
+		# 	dist_to_parent = sqrt(dx*dy + dy*dy)
+		# 	dist_to_parent = 0 if isNaN dist_to_parent
+		# 	
+		# 	ctx.save()
+		# 	r = @r
+		# 	c = r * 4 * (sqrt(2)-1) / 3
+		# 	a = max(1, dist_to_parent / r)
+		# 	ctx.translate @x, @y
+		# 	ctx.rotate angle_to_parent + TAU/2
+		# 	
+		# 	ctx.moveTo +0,+r
+		# 	ctx.bezierCurveTo +c,+r,  +r,+c,  +r,+0
+		# 	ctx.bezierCurveTo +r,-c,  +c,-r,  +0,-r
+		# 	ctx.bezierCurveTo -c,-r,  -r,-c,  -r*a,+0
+		# 	ctx.bezierCurveTo -r*a,+c,  -c*a,+r,  +0,+r
+		# 	
+		# 	ctx.restore()
+		# else
+		ctx.arc @x, @y, @r, 0, TAU
 		ctx.globalAlpha = max(0, min(1, 100 / @r))
 		ctx.fillStyle = @color
-		ctx.beginPath()
-		if @parent
-			dx = @parent.x - @x
-			dy = @parent.y - @y
-			angle_to_parent = atan2(dy, dx)
-			dist_to_parent = sqrt(dx*dy + dy*dy)
-			dist_to_parent = 0 if isNaN dist_to_parent
-			
-			ctx.save()
-			r = @r
-			c = r * 4 * (sqrt(2)-1) / 3
-			a = max(1, dist_to_parent / r)
-			ctx.translate @x, @y
-			ctx.rotate angle_to_parent + TAU/2
-			
-			ctx.moveTo +0,+r
-			ctx.bezierCurveTo +c,+r,  +r,+c,  +r,+0
-			ctx.bezierCurveTo +r,-c,  +c,-r,  +0,-r
-			ctx.bezierCurveTo -c,-r,  -r,-c,  -r*a,+0
-			ctx.bezierCurveTo -r*a,+c,  -c*a,+r,  +0,+r
-			
-			ctx.restore()
-		else
-			ctx.arc @x, @y, @r, 0, TAU
-		ctx.fill()
+		ctx.strokeStyle = @color
+		ctx.shadowBlur = 5
+		ctx.shadowColor = @color
+		ctx.lineWidth = 4
+		# ctx.fill()
+		ctx.stroke()
+		ctx.lineWidth = 3
 		ctx.stroke()
 	
 	spawn: ->
@@ -124,14 +130,12 @@ animate ->
 	
 	{width: w, height: h} = canvas
 	
-	ctx.fillStyle = "white"
+	ctx.fillStyle = "#222"
 	ctx.fillRect 0, 0, w, h
 	
 	ctx.save()
 	ctx.translate(w / 2, h / 2)
 	
-	ctx.strokeStyle = "#222"
-	ctx.lineWidth = 4
 	ctx.lineCap = "round"
 	
 	root.x = 0
