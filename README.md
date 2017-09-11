@@ -1,19 +1,14 @@
-# [Multiism.ml](http://multiism.ml/)
+# [Multiism.ml](http://multiism.ml)
 
+### "game plan"
 
-shdfsdfhshdhsdf
+1. exploit the exponential
+2. conquer combinatorics
+3. invest intensively in infinity
+4. ???
+5. profit
 
-1. exploid the explonential
-2. concour combinartorics
-3. ~~???~~ invenst intenstily in intefiniate
-4. rpofit??!??!
+### links:
 
-http://multiism.ml/)http://multiism.ml/)
-
-Cerely, since  
-[isiah dohenr](isaishodhner.ml))
-
-
-t em p o r a er  y a e sthe ic
-
-hey this is technically better than an empy reamne
+* [Multiism.ml](http://multiism.ml)
+* [Isaiah Odhner](http://isaiahodhner.ml)
