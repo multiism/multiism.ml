@@ -11,17 +11,68 @@ animate=function a(f){f(),n(function(){a(f)})}
 for(p=Object.getOwnPropertyNames(Math),i=0;k=p[i];i++){w[k]=Math[k]}TAU=PI*2}()
 </script>
 <script type="text/coffeescript" src="code-doodle.coffee"></script>
+<!-- TODO: possibly use a lower resolution canvas, since it's purposefully blurry anyways -->
+<!-- TODO: have the effect start out in the headings like it did before,
+either by hiding the main page content initially / moving it below the fold / to a separate page
+or moving the effect to explicitly target the headings (not sure this would look good or if
+centered is better, or if the sim could be changed to start from the top (center of headings) but
+keep it more on screen still)
+-->
 <main>
 	<h1>Multiism</h1>
 	<h2>Exploiting the exponential</h2>
 	<h3>For fun and maybe profit</h3>
-	<ul id="links">
+	
+	<!-- TODO: maybe make the project names headings -->
+	<ul>
 		<li>
 			<a href="https://emoji.multiism.ml/">Emoji Generator/Picker/Designer</a> (early stages but you can play around with it)
+			- since it's procedural, you can transition between expressions, and there can be <strong>way</strong> more possibilities than if each emoji were hand-designed.
 		</li>
 		<li>
-			<a href="https://github.com/multiism/input-control">Input Control</a> library for games (just an idea)
+			<a href="https://github.com/multiism/input-control">Input Control</a> library for games (idea stage)
+			- modular UI, and network effects (centralized development effort and familiarity of the UI between games that use it)
 		</li>
+		<li>
+			<a href="https://github.com/1j01/ooplie">Ooplie</a> - program in English (early stages)
+			- eventually leveraging the npm ecosystem a lot, hopefully ((or another ecosystem)),
+			altho I haven't thought of the best way to create interoperability without too much boilerplalte
+			- it might be that everything in the ooplie ecosystem is a wrapper,
+			which means a <i>lot</i> of abstraction, a lot of surface area for bugs
+			(or just friction, generally - things missing from the libraries that are in the original modules,
+			potential for bugs, and performance)
+		</li>
+		<li>
+			<a href="https://github.com/1j01/node-ahk">node-ahk</a> - desktop automation for Node.js (early stages),
+			a platform that already has <strong>tons and tons</strong> of packages
+			("basically all the functionality" you could need, packaged so you can easily include it in your program),
+			and you can use <a href="https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js">various languages</a> to script. (Python, Ruby, Go, you name it!)
+			The main thing that sucks about AutoHotKey is the language.
+			The language and the limited ecosystem.
+		</li>
+		<li>
+			<a href="https://isaiahodhner.ml/make-making-better">Project Sparrow</a>
+			- user interface design concepts that can be applied to many (if not all) creative programs,
+			as well as the prospect of sharing code for "tools" (brushes etc.) between different types of programs
+			(which you could also call "tools", that's why I'm putting quotes around "tools"), among other things,
+			and just generally trying to accomplish more with less, filling the roles of many programs with a small core perhaps
+		</li>
+	</ul>
+	<h4>More projects (unaffiliated)</h4>
+	<ul>
+		<li>
+			<a href="https://github.com/jvilk/BrowserFS">BrowserFS</a>
+			- provides abstractions for different types and configurations of virtual filesystems in browser.
+			You can use the Node.js APIs, so lots of code could potentially work with it without change.
+		</li>
+		<li>
+			<a href="https://github.com/Morgan-Stanley/desktopJS">desktopJS</a>
+			- provides abstractions for interfacing with different desktop environments (including Electron) with a single API
+		</li>
+	</ul>
+	<!-- TODO: probably make this a footer -->
+	<h4>Meta</h4>
+	<ul>
 		<li>
 			<a href="https://github.com/multiism">Multiism on GitHub</a>
 		</li>
@@ -45,11 +96,14 @@ for(p=Object.getOwnPropertyNames(Math),i=0;k=p[i];i++){w[k]=Math[k]}TAU=PI*2}()
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		/*justify-content: center;*/
 		text-align: center;
 		font-family: 'Heebo', sans-serif;
 		background: rgba(0, 0, 0, 0.1);
 		text-shadow: 0 1px 1px rgba(0, 0, 0, 0.9);
+		overflow: auto;
+		max-width: 70em;
+		margin: auto;
 	}
 	canvas {
 		-webkit-filter: blur(4px);
@@ -72,6 +126,22 @@ for(p=Object.getOwnPropertyNames(Math),i=0;k=p[i];i++){w[k]=Math[k]}TAU=PI*2}()
 	}
 	ul {
 		text-align: left;
+		box-sizing: border-box;
+	}
+	h4,
+	ul {
+		text-align: left;
+		width: 100%;
+	}
+	h4 {
+		box-sizing: border-box;
+		margin: 0;
+		padding-left: 2em;
+		font-weight: 300;
+		font-size: 1.3em;
+	}
+	li {
+		margin-bottom: 0.5em;
 	}
 	a {
 		color: hsla(152, 100%, 67%, 1);
