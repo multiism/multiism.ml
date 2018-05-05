@@ -1,4 +1,4 @@
-# [Multiism.ml](http://multiism.ml)
+# [Multiism.ml](https://multiism.ml)
 
 ### "game plan"
 
@@ -10,5 +10,5 @@
 
 ### links:
 
-* [Multiism.ml](http://multiism.ml)
-* [Isaiah Odhner](http://isaiahodhner.ml)
+* [Multiism.ml](https://multiism.ml)
+* [Isaiah Odhner](https://isaiahodhner.ml)
