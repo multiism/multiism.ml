@@ -2,11 +2,15 @@
 
 ### "game plan"
 
-1. exploit the exponential
-2. conquer combinatorics
-3. invest intensively in infinity
-4. ???
-5. profit
+1. leave behind linearity
+2. master the multiplicative
+3. exploit the exponential
+4. conquer combinatorics
+5. invest intensively in infinity
+6. ???
+7. profit
+8. ？？？？？
+9. ｐｒｏｐｈｅｔ
 
 ### links:
 
