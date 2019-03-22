@@ -1,4 +1,43 @@
 
+canvas = document.createElement("canvas")
+document.body.prepend(canvas)
+ctx = canvas.getContext("2d")
+
+document.body.style.overflow = "hidden"
+document.body.style.margin = 0
+
+do (@onresize = ->
+	canvas.width = innerWidth
+	canvas.height = innerHeight
+)
+
+_="equestAnimationFrame";rAF=@["r"+_] or @["webkitR"+_] or @["mozR"+_] or setTimeout
+animate = (f)->f();rAF(->animate(f))
+
+@[key] = Math[key] for key in Object.getOwnPropertyNames(Math)
+
+@TAU = # C/r  #%##%#|#%##%#
+          #%###     |     #%###
+       #%#         tau         #%#     Tau is equal to the circumference divided by the radius.
+     #%#     ...--> | <--...     #%#
+   #%#     -'   one | turn  '-     #%#    One whole turn in radians.
+  ##     .'         |         '.     ##
+ ##     /           |           \     ##
+ #     |            | <-..       |     #
+##    |          .->|     \       |    ##
+#     |         /   |      |      |     #    Pi is half a turn in radians, as shown in this diagram.
+- - - - - - Math.PI + Math.PI - - - - - 0
+#     |         \   |      |      |     #
+##    |          '->|     /       |    ##
+ #     |            | <-''       |     #
+ ##     \           |           /     ##
+  ##     '.         |         .'     ##
+   #%#     -.       |       .-     #%#
+     #%#     '''----|----'''     #%#     https://jsfiddle.net/1j01/HvHdZ/
+       #%#          |          #%#
+         #%##%#     |     #%###
+              #%##%#|#%##%#
+
 nodes = []
 connections = []
 pointers = {}
