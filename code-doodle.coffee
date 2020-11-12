@@ -46,16 +46,16 @@ canvas.setAttribute "touch-action", "none"
 
 canvas.addEventListener "pointerdown", (e)->
 	pointers[e.pointerId] = x: e.clientX, y: e.clientY
-canvas.addEventListener "pointermove", (e)->
+window.addEventListener "pointermove", (e)->
 	pointer = pointers[e.pointerId]
 	if pointer?
 		pointer.previous_x = pointer.x
 		pointer.previous_y = pointer.y
 		pointer.x = e.clientX
 		pointer.y = e.clientY
-canvas.addEventListener "pointerup", (e)->
+window.addEventListener "pointerup", (e)->
 	delete pointers[e.pointerId]
-canvas.addEventListener "pointercancel", (e)->
+window.addEventListener "pointercancel", (e)->
 	delete pointers[e.pointerId]
 
 class Node
