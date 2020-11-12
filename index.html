@@ -11,11 +11,16 @@ keep it more on screen still)
 -->
 <main>
 	<h1>Multiism</h1>
-	<h2>Exploiting the exponential</h2>
-	<h3>For fun and maybe profit</h3>
-	
+	<h2></h2>
+	<ol>
+		<li>leave behind linearity</li>
+		<li>master the multiplicative</li>
+		<li>exploit the exponential</li>
+		<li>conquer combinatorics</li>
+		<li>invest intensively in infinity</li>
+	</ol>
 	<!-- TODO: maybe make the project names headings -->
-	<ul>
+	<!-- <ul>
 		<li>
 			<a href="https://emoji.multiism.ml/">Emoji Generator/Picker/Designer</a> (early stages but you can play around with it)
 			- since it's procedural, you can transition between expressions, and there can be <strong>way</strong> more possibilities than if each emoji were hand-designed.
@@ -23,8 +28,9 @@ keep it more on screen still)
 		</li>
 		<li>
 			<a href="https://github.com/multiism/input-control">Input Control</a> library for games (idea stage)
-			- modular UI for configuring controls, potentially providing lots of features it wouldn't make sense for individual games to support.
-			I think this is a big missing thing in the world of games & game development.
+			- modular UI for configuring controls, potentially providing lots of features that wouldn't make sense for individual
+			games to implement, unless its the gimmick of the game, like phone-as-controller.
+			I think this is a big missing thing in the world of games / game development, at least on the web.
 		</li>
 		<li>
 			<a href="https://github.com/1j01/ooplie">Ooplie</a> - program in English (early stages)
@@ -50,6 +56,11 @@ keep it more on screen still)
 			as well as the prospect of sharing code for tools (brushes etc.) between different types of programs, among other things,
 			and just generally trying to accomplish more with less, filling the roles of many programs with a small core perhaps
 		</li>
+		<li>
+			idea: program understanding tool that integrates with virtual machine (or operating system??) to roll back and try
+			out
+			different futures / hypotheses and explain why things happened the way they did
+		</li>
 	</ul>
 	<h4>Unaffiliated</h4>
 	<ul>
@@ -58,30 +69,20 @@ keep it more on screen still)
 			- provides abstractions for different types and configurations of virtual filesystems in browser.
 			You can use the Node.js APIs, so lots of code could potentially work with it without change.
 		</li>
-	</ul>
-	<!-- TODO: probably make this a footer -->
-	<h4>Meta</h4>
-	<ul>
-		<li>
-			<a href="https://github.com/multiism">Multiism on GitHub</a>
-		</li>
-		<li>
-			<a href="https://github.com/multiism/multiism.ml">This website on GitHub</a>
-		</li>
-	</ul>
-</main>
+	</ul> -->
+	</main>
+	<footer>
+	<a href="https://github.com/multiism/multiism.ml">This website on GitHub</a>
+</footer>
 <link href="https://fonts.googleapis.com/css?family=Heebo:100,300" rel="stylesheet">
 <style>
 	body {
 		background: #222;
 		color: white;
 	}
-	main {
+	main,
+	footer {
 		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -91,8 +92,19 @@ keep it more on screen still)
 		background: rgba(0, 0, 0, 0.1);
 		text-shadow: 0 1px 1px rgba(0, 0, 0, 0.9);
 		overflow: auto;
-		max-width: 70em;
+		/* max-width: 70em; */
+		max-width: 30em;
 		margin: auto;
+		left: 0;
+		right: 0;
+	}
+	main {
+		top: 0;
+		bottom: 0;
+	}
+	footer {
+		bottom: 0;
+		padding: 15px 0;
 	}
 	canvas {
 		filter: blur(4px);
